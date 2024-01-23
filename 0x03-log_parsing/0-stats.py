@@ -15,4 +15,5 @@ if __name__ == "__main__":
         if index % 10 == 0:
             print("File size: {}".format(size))
             for k, v in code.items():
-                print("{}: {}".format(k, v))
+                if v > 0:
+                    print("{}: {}".format(k, v))
