@@ -19,6 +19,6 @@ def island_perimeter(grid):
                         perimeter += 1
                     if grid[i][j + 1] == 0:
                         perimeter += 1
-                except Exceptions:
+                except Exception:
                     pass
     return (perimeter)
