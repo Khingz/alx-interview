@@ -4,23 +4,23 @@
 
 
 def island_perimeter(grid):
-    """ island perimeter function
     """
+    Calculates the perimeter of the island in the given grid.
+    Args:
+      Returns:
+      The perimeter of the island, or 0 if there is no island.
+      """
     perimeter = 0
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
-            if grid[i][j] == 0:
-                continue
-            if grid[i][j] == 1:
-                try:
-                    if i > 0 and grid[i - 1][j] == 0:
-                        perimeter += 1
-                    if i < len(grid) - 1 and grid[i + 1][j] == 0:
-                        perimeter += 1
-                    if j > 0 and grid[i][j - 1] == 0:
-                        perimeter += 1
-                    if j < len(grid[i]) - 1 and grid[i][j + 1] == 0:
-                        perimeter += 1
-                except IndexError:
-                    pass
-    return (perimeter)
+    rows, cols = len(grid), len(grid[0])
+    for row in range(rows):
+        for col in range(cols):
+            if grid[row][col] == 1:
+                if row > 0 and grid[row - 1][col] == 0:
+                    perimeter += 1
+                if row < rows - 1 and grid[row + 1][col] == 0:
+                    perimeter += 1
+                if col > 0 and grid[row][col - 1] == 0:
+                    perimeter += 1
+                if col < cols - 1 and grid[row][col + 1] == 0:
+                    perimeter += 1
+    return perimeter
