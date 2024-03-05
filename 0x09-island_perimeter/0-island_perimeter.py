@@ -4,23 +4,21 @@
 
 
 def island_perimeter(grid):
-    """ island perimeter function
-    """
     perimeter = 0
-    if not grid or len(grid) == 0:
+    if not grid:  # Empty grid
         return perimeter
-    for i in range(len(grid)):
-        for j in range(len(grid[i])):
+
+    rows = len(grid)
+    cols = len(grid[0])
+
+    for i in range(rows):
+        for j in range(cols):
             if grid[i][j] == 1:
-                try:
-                    if i > 0 and grid[i - 1][j] == 0:
-                        perimeter += 1
-                    if i < len(grid) - 1 and grid[i + 1][j] == 0:
-                        perimeter += 1
-                    if j > 0 and grid[i][j - 1] == 0:
-                        perimeter += 1
-                    if j < len(grid[i]) - 1 and grid[i][j + 1] == 0:
-                        perimeter += 1
-                except IndexError:
-                    perimeter += 1
-    return (perimeter)
+                perimeter += 4  # Each land cell contributes 4 to perimeter
+                # Check adjacent cells
+                if i > 0 and grid[i - 1][j] == 1:
+                    perimeter -= 2  # If top neighbor is land, subtract 2
+                if j > 0 and grid[i][j - 1] == 1:
+                    perimeter -= 2  # If left neighbor is land, subtract 2
+
+    return perimeter
